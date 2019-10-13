@@ -1,5 +1,5 @@
 # ChatApp
-created with:
+Technologies used within:
 - Socket.io 
 - React  
 - Redux
@@ -9,4 +9,3 @@ created with:
 - NodeJs 
 - Express 
 - MongoDb
-- 
