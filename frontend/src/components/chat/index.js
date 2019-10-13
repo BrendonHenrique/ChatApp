@@ -18,9 +18,15 @@ export default class chat extends Component {
     
     componentDidMount = () => {
         const { socket } = this.state;
+        
+        socket.on('getMessages', serverResponse => {
+            this.setState({messages:serverResponse});
+        });
+
         socket.on('newUser', userID => {
             this.setState({userID});
         });
+
         socket.on('receivedMessage', newReceivedMessage => {
             this.setState({
                 messages: [...this.state.messages, newReceivedMessage]
@@ -31,15 +37,14 @@ export default class chat extends Component {
     submitHandler = (event) => {
         const { author, message, socket } = this.state;
         event.preventDefault();
+        
         if(author.length && message.length){
             socket.emit('sendMessage', {
                 author, message 
             });
         }
-        this.setState({
-            messages: [...this.state.messages, {author, message}],
-            message:  ''
-        });
+        this.setState({message:  ''});
+
     }
 
     handleChange(event){
@@ -63,7 +68,11 @@ export default class chat extends Component {
                     <div className="messages">
                         <ul>
                             {
-                                state.messages.map( message => <li key={message.message}> <strong>{message.author} says</strong>: {message.message} </li>)
+                                state.messages.map( message => 
+                                    <li key={message._id}>
+                                        <strong>{message.author} says</strong>: {message.message} 
+                                    </li>
+                                )
                             }
                         </ul>
                     </div>
