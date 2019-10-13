@@ -1,9 +1,12 @@
 # ChatApp
 created with:
 - Socket.io 
-- VueJs 
-- Vuex
-- Quasar 
+- React  
+- Redux
+- SASS
+- MaterialUI
+- Jest
 - NodeJs 
 - Express 
 - MongoDb
+- 
