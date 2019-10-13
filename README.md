@@ -9,3 +9,5 @@ Technologies used within:
 - NodeJs 
 - Express 
 - MongoDb
+- Babel 
+- Webpack
