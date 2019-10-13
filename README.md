@@ -8,6 +8,6 @@ Technologies used within:
 - Jest
 - NodeJs 
 - Express 
-- MongoDb
+- MongoDB
 - Babel 
 - Webpack
