@@ -3,7 +3,7 @@ Technologies used within:
 - Socket.io 
 - React  
 - Redux
-- SASS
+- StyledComponents
 - MaterialUI
 - Jest
 - NodeJs 
