@@ -14,7 +14,7 @@ Technologies used within:
 
 ## Setup the enviroment 
 
-To run this project you will need to install 
+To run this project you will need to install a mount of dependencies , so for this you should need to istall first :  
 - NodeJS
 - NPM
 
@@ -23,7 +23,8 @@ To run this project you will need to install
 
 In the ./frontend directory, you can run at your command line :
 
-### `npm start`
+### `npm install` // to install all dependencies 
+### `npm start` // to init client-side
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -35,7 +36,9 @@ You will also see any lint errors in the console.
 
 In the ./backend directory, you can run at your command line :
 
-### `npm start`
+
+### `npm install` // to install all dependencies
+### `npm start` // to init server-side
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
