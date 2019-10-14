@@ -18,8 +18,6 @@ const saveSendedMessage = async (message) => await Messages.create(message);
 
 io.on('connection', socket => { 
 
-    socket.emit('newUser', socket.id);
-
     getMessagesFromDB().then(messages => {
         socket.emit('getMessages',messages);
     });
@@ -30,6 +28,8 @@ io.on('connection', socket => {
             socket.emit('receivedMessage', newSavedMessage); 
         });
     });
+
+    socket.on('disconnect', function(){ });
 });
 
 server.listen(3001, () => { 

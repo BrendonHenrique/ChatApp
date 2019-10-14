@@ -3,7 +3,7 @@ import AddIcon from '@material-ui/icons/Add';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import './style.css';
 import {TextField, InputAdornment, Paper, Fab, InputBase, Container, Card, CardActions, CardContent, List, 
-    ListItem, ListItemText, ListItemAvatar, Avatar, Typography,} from '@material-ui/core';
+    ListItem, ListItemText, ListItemAvatar, Avatar, Typography} from '@material-ui/core';
 import discordAvatar from '../../static/discord-avatar.jpg';
 
 export default class chat extends Component {
@@ -13,10 +13,8 @@ export default class chat extends Component {
         this.state = { 
             socket : this.props.socket,
             messages : [],
-            userID: Number,
             author : '',
             message: '',
-            isVisible: true,
         };
         this.handleChange = this.handleChange.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
@@ -32,10 +30,6 @@ export default class chat extends Component {
             this.scrollChatToBottom();
         });
 
-        socket.on('newUser', userID => {
-            this.setState({userID});
-        });
-
         socket.on('receivedMessage', newReceivedMessage => {
             this.setState({
                 messages: [...this.state.messages, newReceivedMessage]
@@ -43,9 +37,6 @@ export default class chat extends Component {
             this.scrollChatToBottom();
         });
     
-        setInterval(() => {
-            this.setState({ isVisible: !this.state.isVisible });
-          }, 1000);
     }
 
     submitHandler = (event) => {
@@ -76,9 +67,8 @@ export default class chat extends Component {
     render() {
         const { state } = this;
         return (
-            <Container maxWidth="sm">
-
-                <Card>
+            <Container maxWidth="sm" style={{marginTop:30, height:'115vh'}}>
+                <Card style={{boxShadow: '0 1px 10px white'}}>
                     <CardContent id="chat">
                         <TextField 
                         variant="outlined"
