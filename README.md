@@ -50,3 +50,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
+## App screenshot
+![alt text](https://raw.githubusercontent.com/BrendonHenrique/ChatApp/master/network/Captura%20de%20Tela_selecionar%20%C3%A1rea_20191014181619.png)
+
+
