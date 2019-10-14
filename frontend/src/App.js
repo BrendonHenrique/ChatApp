@@ -7,15 +7,18 @@ class App extends Component {
     super();
     this.state = {
       response: false,
-      endpoint: "http://localhost:3001",
+      endpoint: "http://192.168.15.2:3001",
       socket: null, 
     };
   }
+  
   render() {
     const { endpoint } = this.state;
     const socket = socketIOClient(endpoint);
     return (
-      <Chat  socket={socket}/>
+      <div>
+        <Chat  socket={socket}/>
+      </div>
     );
   }
 }
