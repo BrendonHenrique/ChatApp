@@ -67,7 +67,7 @@ export default class chat extends Component {
     render() {
         const { state } = this;
         return (
-            <Container maxWidth="sm" style={{marginTop:30, height:'115vh'}}>
+            <Container maxWidth="sm" style={{marginTop:30, }}>
                 <Card style={{boxShadow: '0 1px 10px white'}}>
                     <CardContent id="chat">
                         <TextField 
@@ -82,7 +82,7 @@ export default class chat extends Component {
                         }}
                         value={state.author} name="author" onChange={this.handleChange}
                         label="Digite seu nome" />
-                        <Card className="messages" >
+                        <Card className="messages" style={{ height: '50vh', marginTop: '2rem', marginBottom: '2rem',}}>
                             <List style={{overflowY:'scroll', height:'95%'}}  ref="chatContainer">
                                 {
                                     state.messages.map( message =>( 

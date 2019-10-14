@@ -8,10 +8,6 @@ import './style.css';
 
 
 export default class Header extends Component{
-  constructor(props){
-    super(props);
-  }
-
   render(){
     return (
       <div style={{ flexGrow: 1 }}>

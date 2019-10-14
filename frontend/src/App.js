@@ -40,26 +40,34 @@ class App extends Component {
     const socket = socketIOClient(endpoint);
 
     return (
-      <div>
-        <Header handlerOpen={this.handleDrawerOpen} />
+      <div style={{height:'100vh'}}>
 
-        <SwipeableDrawer
-          anchor="left"
-          onClose={this.handleDrawerClose}
-          onOpen={this.handleDrawerOpen}
-          open={this.state.drawerOpen} >
-          <Divider />
-          <List>
-            {['user1', 'user2', 'user3', 'user4384732874'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon><AccountCircle /></ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-        </SwipeableDrawer>
+        {/* Header */}
+          <Header handlerOpen={this.handleDrawerOpen} />
+        {/*  */}
+        
+        {/* Menu lateral  */}
+          <SwipeableDrawer
+            anchor="left"
+            onClose={this.handleDrawerClose}
+            onOpen={this.handleDrawerOpen}
+            open={this.state.drawerOpen} >
+            <Divider />
+            <List>
+              {['user1', 'user2', 'user3', 'user4384732874'].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon><AccountCircle /></ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+          </SwipeableDrawer>
+        {/*  */}
+        
+        {/* Chat */}
+          <Chat socket={socket}/>
+        {/*  */}
 
-        <Chat socket={socket}/>
       </div>
     );
   }
