@@ -1,4 +1,8 @@
 # ChatApp
+
+- A real time chat application , project created for the discipline of networks in the course of computer science at
+federal university of pelotas.
+
 Technologies used within:
 - Socket.io 
 - React  
