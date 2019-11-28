@@ -23,6 +23,9 @@ io.on('connection', socket => {
     });
     
     socket.on('sendMessage', message => {
+        
+        console.log(message);
+        
         saveSendedMessage(message).then(newSavedMessage => { 
             socket.broadcast.emit('receivedMessage', newSavedMessage);
             socket.emit('receivedMessage', newSavedMessage); 
@@ -33,5 +36,5 @@ io.on('connection', socket => {
 });
 
 server.listen(3001, () => { 
-    console.log('Servidor escutando na porta 3001')
+    console.log('Servidor escutando na porta 3000')
 });
