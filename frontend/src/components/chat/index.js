@@ -85,8 +85,8 @@ export default class chat extends Component {
                         <Card className="messages" style={{ height: '50vh', marginTop: '2rem', marginBottom: '2rem',}}>
                             <List style={{overflowY:'scroll', height:'95%'}}  ref="chatContainer">
                                 {
-                                    state.messages.map( message =>( 
-                                        <ListItem key={message._id} alignItems="flex-start">
+                                    state.messages.map( (message, index) =>( 
+                                        <ListItem key={index} alignItems="flex-start">
                                             <ListItemAvatar>
                                                 <Avatar  src={discordAvatar} />
                                             </ListItemAvatar>
@@ -112,7 +112,7 @@ export default class chat extends Component {
                         <CardActions>
                             <Paper style={{ padding: '2px 4px', display: 'flex', alignItems: 'center', width: '100%',boxShadow:'2px 2px 7px #e0d9d9' }}>
                                 <InputBase style={{ marginLeft: 10, flex: 1 }} placeholder="Escreva a mensagem" 
-                                value={state.message}  name="message" onChange={this.handleChange} />
+                                value={state.message}  name="message" onChange={this.handleChange}/>
                                 <Fab color="primary" aria-label="add" onClick={this.submitHandler}>
                                     <AddIcon />
                                 </Fab>

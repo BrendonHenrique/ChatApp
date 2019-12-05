@@ -9,7 +9,7 @@ class App extends Component {
     super();
     this.state = {
       response: false,
-      endpoint: "http://localhost:3001",
+      endpoint: "http://192.168.15.8:3001",
       socket: null,
       drawerOpen: true,
     };

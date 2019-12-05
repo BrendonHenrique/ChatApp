@@ -5,36 +5,38 @@ app.use(cors());
 app.use(express.json());
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const requireDir = require('require-dir')
-mongoose.connect('mongodb://localhost:27017/chat',
-    { useUnifiedTopology: true, useNewUrlParser: true },
-);
+// mongoose.connect('mongodb://localhost:27017/chat',
+//     { useUnifiedTopology: true, useNewUrlParser: true },
+// );
 requireDir("./src/models");
-const Messages = mongoose.model('Messages')
+// const Messages = mongoose.model('Messages')
 
-const getMessagesFromDB = async () => await Messages.find();
-const saveSendedMessage = async (message) => await Messages.create(message);
+const Messages = []
+
+// const getMessagesFromDB = async () => await Messages.find();
+// const saveSendedMessage = async (message) => await Messages.create(message);
 
 io.on('connection', socket => { 
 
-    getMessagesFromDB().then(messages => {
-        socket.emit('getMessages',messages);
-    });
+    socket.emit('getMessages',Messages);
+    
+    console.log('new conection');
+    
+    console.log(Messages);
     
     socket.on('sendMessage', message => {
-        
+
         console.log(message);
-        
-        saveSendedMessage(message).then(newSavedMessage => { 
-            socket.broadcast.emit('receivedMessage', newSavedMessage);
-            socket.emit('receivedMessage', newSavedMessage); 
-        });
+        Messages.push(message);
+        socket.broadcast.emit('receivedMessage', message);
+        socket.emit('receivedMessage', message); 
     });
 
     socket.on('disconnect', function(){ });
 });
 
 server.listen(3001, () => { 
-    console.log('Servidor escutando na porta 3000')
+    console.log('Servidor escutando na porta 3001')
 });
