@@ -6,10 +6,7 @@ federal university of pelotas.
 Technologies used within:
 - Socket.io 
 - React  
-- Redux
-- StyledComponents
 - MaterialUI
-- Jest
 - NodeJs 
 - Express 
 - MongoDB
