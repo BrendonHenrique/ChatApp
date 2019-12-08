@@ -5,30 +5,21 @@ app.use(cors());
 app.use(express.json());
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-// const mongoose = require('mongoose');
 const requireDir = require('require-dir')
-// mongoose.connect('mongodb://localhost:27017/chat',
-//     { useUnifiedTopology: true, useNewUrlParser: true },
-// );
 requireDir("./src/models");
-// const Messages = mongoose.model('Messages')
 
 const Messages = []
 
-// const getMessagesFromDB = async () => await Messages.find();
-// const saveSendedMessage = async (message) => await Messages.create(message);
-
+// Conexão estabelecida, socket disponivel para comunicação
 io.on('connection', socket => { 
 
-    socket.emit('getMessages',Messages);
+    //GetMessages retorna para o cliente todas as mensagens enviadas até o momento
+    socket.emit('getMessages', Messages);
     
-    console.log('new conection');
-    
-    console.log(Messages);
-    
+    //SendMessages recebe mensagem do cliente, adiciona na lista de mensagens, compartilha a mensagem 
+    // com os outros usuarios conectados, e retorna a mensagem para o usuario que a enviou
     socket.on('sendMessage', message => {
 
-        console.log(message);
         Messages.push(message);
         socket.broadcast.emit('receivedMessage', message);
         socket.emit('receivedMessage', message); 

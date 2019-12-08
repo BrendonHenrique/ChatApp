@@ -9,7 +9,8 @@ class App extends Component {
     super();
     this.state = {
       response: false,
-      endpoint: "http://192.168.15.8:3001",
+      // endpoint recebe o ip do servidor 
+      endpoint: "http://192.168.165.64:3001",
       socket: null,
       drawerOpen: true,
     };
